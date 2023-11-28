@@ -6,26 +6,36 @@ using UnityEngine.UI;
 
 public class spawn : MonoBehaviour
 {
-    public GameObject[] spawns;
+    //public Transform[] spawns;
+    public Transform[] spawnLocations;
     public GameObject raptor;
     public static int round = 0;
-    private int RaptorAmount;
-    private int SpawnTime = 5;
-    private int MaxRaptor = 10;
+    public static int RaptorAmount;
+    private int SpawnTime;
+    private int MaxRaptor;
     public GameObject canvas;
+    //public Transform RandomSpawn;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 0;
+        
         round++;
         canvas.SetActive(false);
+        Time.timeScale = 1;
         StartCoroutine("SpawnRaptor");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (round == 2)
+        if (round == 1)
+        {
+            SpawnTime = 5;
+            MaxRaptor = 10;
+        }
+        else if (round == 2)
         {
             SpawnTime = 3;
             MaxRaptor = 15;
@@ -43,6 +53,8 @@ public class spawn : MonoBehaviour
             RaptorAmount = 0;
             //StartCoroutine("SpawnRaptor");
         }
+
+        //RandomSpawn = spawns[Random.Range(0, 19)];
     }
 
     //public void SpawnRandom()
@@ -61,7 +73,7 @@ public class spawn : MonoBehaviour
         //for (int i = 0; i <= MaxRaptor; i++)
         {
             {
-                Instantiate(raptor);
+                Instantiate(raptor, spawnLocations[Random.Range(0,19)]);
                 Debug.Log("spawned raptor");
                 RaptorAmount++;
                 Debug.Log("time: " + SpawnTime);

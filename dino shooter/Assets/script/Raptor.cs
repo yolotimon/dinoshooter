@@ -10,14 +10,14 @@ public class Raptor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.LookAt(player.transform);
-        transform.position += transform.forward * 1f * Time.deltaTime;
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
 
     private void Awake()

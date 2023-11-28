@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3891806825356140431}
   - component: {fileID: 1960722089250515395}
   - component: {fileID: 968160439685114216}
+  - component: {fileID: 8937024860260346996}
   m_Layer: 0
   m_Name: boulet
   m_TagString: Untagged
@@ -133,3 +134,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8937024860260346996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107038847454695253}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07535e25f00b897458eb955dd6154ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

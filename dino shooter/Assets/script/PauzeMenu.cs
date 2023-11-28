@@ -9,13 +9,13 @@ using UnityEngine.UI;
 public class PauzeMenu : MonoBehaviour
 {
     public GameObject menu;
-    private bool MenuActive = false;
+    public static bool MenuActive = false;
     GameObject presser;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        MenuActive = true;
     }
 
     //public void OnTriggerExit(Collider other)
@@ -29,7 +29,7 @@ public class PauzeMenu : MonoBehaviour
 
     public void menuOpen()
     {
-        if (MenuActive == false)
+        if (MenuActive == false && spawn.canvasActive == false)
         {
             menu.SetActive(true);
             MenuActive = true;

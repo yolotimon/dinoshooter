@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 
 public class Raptor : MonoBehaviour
 {
     private GameObject player;
-    public float speed;
+    public static float speed = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -24,4 +25,11 @@ public class Raptor : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("bullet"))
+    //    {
+            
+    //    }
+    //}
 }

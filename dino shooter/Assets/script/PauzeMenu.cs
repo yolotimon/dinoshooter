@@ -15,7 +15,7 @@ public class PauzeMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MenuActive = true;
+
     }
 
     //public void OnTriggerExit(Collider other)
@@ -29,18 +29,32 @@ public class PauzeMenu : MonoBehaviour
 
     public void menuOpen()
     {
-        if (MenuActive == false && spawn.canvasActive == false)
+        if (MenuActive == false)
         {
             menu.SetActive(true);
             MenuActive = true;
-            Time.timeScale = 0f;
         }
         else if (MenuActive == true)
         {
             menu.SetActive(false);
-            Time.timeScale = 1f;
             MenuActive = false;
         }
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ContinueGame()
+    {
+        menu.SetActive(false);
+        MenuActive = false;
+    }
+
+    public void StartMenu()
+    {
+        SceneManager.LoadScene("start");
     }
 
     //public void quit()

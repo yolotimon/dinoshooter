@@ -7,22 +7,21 @@ public class spawnRound2 : MonoBehaviour
 {
     //public Transform[] spawns;
     public Transform[] spawnLocations;
-    public GameObject raptor;
-    public static int RaptorAmount;
+    public GameObject[] dinos;
+
     private int SpawnTime = 3;
-    public static int MaxRaptor = 15;
+
     public GameObject canvas;
     //public Transform RandomSpawn;
     public GameObject FirstCanvas;
-    public static bool canvasActive;
-    public static int raptorsKilled;
+
+    private int pointrequirement = 30;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 0;
-        canvasActive = true;
+
     }
 
     // Update is called once per frame
@@ -44,14 +43,12 @@ public class spawnRound2 : MonoBehaviour
         //    MaxRaptor = 20;
         //}
 
-        if (raptorsKilled == MaxRaptor)
+        if (bullet.points >= pointrequirement)
         {
             StopCoroutine("SpawnRaptor");
             //round++;
-            RaptorAmount = 0;
             //StartCoroutine("SpawnRaptor");
             FirstCanvas.SetActive(true);
-            PauzeMenu.MenuActive = true;
             Time.timeScale = 0f;
         }
 
@@ -66,9 +63,7 @@ public class spawnRound2 : MonoBehaviour
     public void startspawns()
     {
         canvas.SetActive(false);
-        Time.timeScale = 1;
         StartCoroutine("SpawnRaptor");
-        canvasActive = false;
     }
 
     public IEnumerator SpawnRaptor()
@@ -79,12 +74,9 @@ public class spawnRound2 : MonoBehaviour
             {
                 
                 {
-                    Instantiate(raptor, spawnLocations[Random.Range(0, 15)]);
-                    Debug.Log("spawned raptor");
-                    RaptorAmount++;
+                    Instantiate(dinos[Random.Range(0, 3)], spawnLocations[Random.Range(0, 20)]);
+                    Debug.Log("spawned");
                     Debug.Log("time: " + SpawnTime);
-                    Debug.Log("max: " + MaxRaptor);
-                    Debug.Log("Raptors: " + RaptorAmount);
                     yield return new WaitForSeconds(SpawnTime);
                 }
                 
@@ -105,8 +97,6 @@ public class spawnRound2 : MonoBehaviour
 
     public void NextRound2()
     {
-        RaptorAmount = 0;
-        canvasActive = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene("round3");
         FirstCanvas.SetActive(false);
@@ -114,8 +104,7 @@ public class spawnRound2 : MonoBehaviour
 
     public void StartScene()
     {
-        RaptorAmount = 0;
-        canvasActive = false;
+        bullet.points = 0;
         Time.timeScale = 1f;
         FirstCanvas.SetActive(false);
         SceneManager.LoadScene("start");

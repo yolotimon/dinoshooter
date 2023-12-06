@@ -24,10 +24,22 @@ public class raptorTrigger : MonoBehaviour
     {
         if (other.CompareTag("raptor"))
         {
+            Destroy(other);
             canvas.SetActive(true);
             Time.timeScale = 0;
+            
+        }
+        else if (other.CompareTag("stego"))
+        {
             Destroy(other);
-            spawn.canvasActive = true;
+            canvas.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else if (other.CompareTag("pachy"))
+        {
+            Destroy(other);
+            canvas.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

@@ -17,6 +17,17 @@ public class startScene : MonoBehaviour
 
     public void start()
     {
+        StopWatch.timeMinutes[0] = 0;
+        StopWatch.timeMinutes[1] = 0;
+        StopWatch.timeMinutes[2] = 0;
+        StopWatch.timeMinutes[3] = 0;
+        StopWatch.timeSeconds[0] = 0;
+        StopWatch.timeSeconds[0] = 0;
+        StopWatch.timeSeconds[1] = 0;
+        StopWatch.timeSeconds[2] = 0;
+        StopWatch.timeSeconds[3] = 0;
+        StopWatch.timeSeconds[4] = 0;
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("round1");
     }
 

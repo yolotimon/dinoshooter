@@ -6,6 +6,11 @@ TagManager:
   tags:
   - righthand
   - raptor
+  - pachy
+  - stego
+  - boss
+  - audioManager
+  - xrOrigin
   layers:
   - Default
   - TransparentFX

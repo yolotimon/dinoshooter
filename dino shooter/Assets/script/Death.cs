@@ -20,12 +20,7 @@ public class Death : MonoBehaviour
 
     public void Reset()
     {
-        spawn.raptorsKilled = 0;
-        spawnRound2.raptorsKilled = 0;
-        spawnRound3.raptorsKilled = 0;
-        spawn.RaptorAmount = 0;
-        spawnRound3.RaptorAmount = 0;
-        spawnRound2.RaptorAmount = 0;
+        bullet.points = 0;
         SceneManager.LoadScene("start");
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StopWatch : MonoBehaviour
@@ -10,29 +11,28 @@ public class StopWatch : MonoBehaviour
     public  static float currentTime;
     public TMP_Text currentTimeText;
 
-    public static float[] timeSeconds = new float[4];
-    public static float[] timeMinutes = new float[4];
-
-    public TMP_Text[] minutes = new TextMeshPro[4];
-    public TMP_Text[] seconds = new TextMeshPro[4];
-
     public static int currentRound = 0;
 
-    TimeSpan time = TimeSpan.FromSeconds(currentTime);
+    public static float minutes;
+    public static float seconds;
 
     // Start is called before the first frame update
     void Start()
     {
         currentTime = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        TimeSpan time = TimeSpan.FromSeconds(currentTime);
         if (stopwatchActive == true) {
             currentTime = currentTime + Time.deltaTime;
         }
         currentTimeText.text = "time: " + time.Minutes.ToString() + ":" + time.Seconds.ToString();
+        minutes = time.Minutes;
+        seconds = time.Seconds;
     }
 
     public void StartStopwatch()
@@ -47,11 +47,13 @@ public class StopWatch : MonoBehaviour
 
     public void SaveScore()
     {
-        if (currentRound < timeSeconds.Length)
+        if (currentRound < scoreDisplayer.timeSeconds.Length)
         {
-            timeMinutes[currentRound] = time.Minutes;
-            timeSeconds[currentRound] = time.Seconds;
+            scoreDisplayer.timeMinutes[currentRound] = minutes;
+            scoreDisplayer.timeSeconds[currentRound] = seconds;
         }
+        Debug.Log("saved, time: " + scoreDisplayer.timeMinutes[currentRound] + ":" + scoreDisplayer.timeSeconds[currentRound]);
         currentRound++;
     }
+
 }

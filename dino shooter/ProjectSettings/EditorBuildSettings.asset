@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/round3.unity
     guid: 93e39c29d4ce1e1458f8d347e9ab60f8
+  - enabled: 1
+    path: Assets/Scenes/boss.unity
+    guid: 11fa06fa4589c964db4c865148e16152
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 82085bdf8435cbb43b4248162686066c,
       type: 2}

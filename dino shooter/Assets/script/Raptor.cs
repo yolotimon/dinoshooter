@@ -9,6 +9,7 @@ public class Raptor : MonoBehaviour
     public static float speed = 5;
     private Rigidbody rb;
     audioManager manager;
+    private bool hasRun;
 
     //private static bool hasRun = false;
 
@@ -30,7 +31,25 @@ public class Raptor : MonoBehaviour
         //    StartCoroutine("hasItRun");
         //    hasRun = true;
         //}
+
+        if (!rb.IsSleeping() && hasRun == false)
+        {
+            manager.PlayStomps(manager.dinoStomp);
+            StartCoroutine("hasItRun");
+            hasRun = true;
+        }
     }
+
+    public IEnumerator hasItRun()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(20.532f);
+            hasRun = false;
+            StopCoroutine("hasItRun");
+        }
+    }
+
     //public IEnumerator hasItRun()
     //{
     //    while (true)

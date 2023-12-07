@@ -20,7 +20,7 @@ public class lossBoss : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.CompareTag("boss"))
+        if (other.gameObject.CompareTag("boss"))
         {
             Time.timeScale = 0f;
             canvas.SetActive(true);

@@ -27,6 +27,8 @@ public class Boss : MonoBehaviour
     {
         boss = GameObject.FindGameObjectWithTag("boss");
         rb = boss.GetComponent<Rigidbody>();
+        Time.timeScale = 1f;
+        xrOrigin.GetComponent<StopWatch>().StartStopwatch();
     }
 
     // Update is called once per frame
@@ -34,8 +36,9 @@ public class Boss : MonoBehaviour
     {
         if (bossHPleft == 0)
         {
-            canvas.SetActive(true);
             xrOrigin.GetComponent<StopWatch>().SaveScore();
+            xrOrigin.GetComponent<StopWatch>().StopStopwatch();
+            canvas.SetActive(true);
             Destroy(boss);
         }
 

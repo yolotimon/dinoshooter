@@ -9,13 +9,20 @@ public class spawnRound2 : MonoBehaviour
     public Transform[] spawnLocations;
     public GameObject[] dinos;
 
-    private int SpawnTime = 3;
+    private int SpawnTime = 4;
+
+    private GameObject xrOrigin;
 
     public GameObject canvas;
     //public Transform RandomSpawn;
     public GameObject FirstCanvas;
 
     private int pointrequirement = 30;
+
+    private void Awake()
+    {
+        xrOrigin = GameObject.FindGameObjectWithTag("xrOrigin");
+    }
 
 
     // Start is called before the first frame update
@@ -98,6 +105,7 @@ public class spawnRound2 : MonoBehaviour
     public void NextRound2()
     {
         Time.timeScale = 1f;
+        xrOrigin.GetComponent<StopWatch>().SaveScore();
         SceneManager.LoadScene("round3");
         FirstCanvas.SetActive(false);
     }

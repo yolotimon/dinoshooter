@@ -7,6 +7,7 @@ public class stego : MonoBehaviour
 {
     private GameObject player;
     public static float speed = 3;
+    private bool hasRun;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,23 @@ public class stego : MonoBehaviour
     {
         transform.LookAt(player.transform);
         transform.position += transform.forward * speed * Time.deltaTime;
+
+        if (!rb.IsSleeping() && hasRun == false)
+        {
+            manager.PlayStomps(manager.dinoStomp);
+            StartCoroutine("hasItRun");
+            hasRun = true;
+        }
+    }
+
+    public IEnumerator hasItRun()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(20.532f);
+            hasRun = false;
+            StopCoroutine("hasItRun");
+        }
     }
 
     private void Awake()

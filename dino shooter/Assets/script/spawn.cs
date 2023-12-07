@@ -13,12 +13,19 @@ public class spawn : MonoBehaviour
 
     private int SpawnTime = 5;
 
+    private GameObject xrOrigin;
+
     public GameObject canvas;
     //public Transform RandomSpawn;
     public GameObject FirstCanvas;
 
     private int pointrequirement = 20;
-    
+
+    private void Awake()
+    {
+        xrOrigin = GameObject.FindGameObjectWithTag("xrOrigin");
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +106,7 @@ public class spawn : MonoBehaviour
     public void NextRound()
     {
         Time.timeScale = 1f;
+        xrOrigin.GetComponent<StopWatch>().SaveScore();
         FirstCanvas.SetActive(false);
         SceneManager.LoadScene("round2");
     }
